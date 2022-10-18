@@ -1,20 +1,24 @@
 # Portable Minecraft Launcher
+
 An easy-to-use command line Minecraft launcher in only one Python script!
 This launcher is compatible with the directory structure of the official Minecraft Launcher.
 It aims to be fast and reliable for all Minecraft versions in a stateless manner, it also supports
 addons, official ones can be found below.
 
-![PyPI - Version](https://img.shields.io/pypi/v/portablemc?label=PyPI%20version&style=flat-square) &nbsp;![PyPI - Downloads](https://img.shields.io/pypi/dm/portablemc?label=PyPI%20downloads&style=flat-square) &nbsp;![GitHub downloads (legacy)](https://img.shields.io/github/downloads/mindstorm38/portablemc/total?label=Github%20downloads%20(legacy)&style=flat-square)
+#Traduccion
+
+![PyPI - Version](https://img.shields.io/pypi/v/portablemc?label=PyPI%20version&style=flat-square) &nbsp;![PyPI - Downloads](https://img.shields.io/pypi/dm/portablemc?label=PyPI%20downloads&style=flat-square) &nbsp;![GitHub downloads (legacy)](<https://img.shields.io/github/downloads/mindstorm38/portablemc/total?label=Github%20downloads%20(legacy)&style=flat-square>)
 
 ### [Install now!](#installation)
 
-#### ***[Fabric](/src/fabric/README.md), [Forge](/src/forge/README.md) and [Quilt](/src/quilt/README.md) addons***
+#### **_[Fabric](/src/fabric/README.md), [Forge](/src/forge/README.md) and [Quilt](/src/quilt/README.md) addons_**
 
 ![illustration](doc/assets/illustration.png)
 
-*This launcher is tested for Python 3.6, 3.7, 3.8, 3.9, 3.10.*
+_This launcher is tested for Python 3.6, 3.7, 3.8, 3.9, 3.10._
 
 # Table of contents
+
 - [Installation](#installation)
 - [Sub-commands](#sub-commands)
   - [Start the game](#start-the-game)
@@ -41,11 +45,12 @@ addons, official ones can be found below.
 - [Addon API Documentation ⇗](doc/ADDON.md)
 
 # Installation
-Before starting, please check if your Python version is valid for the launcher by doing 
+
+Before starting, please check if your Python version is valid for the launcher by doing
 `python -V`, the version must be greater or equal to 3.6 according to [semver specification](https://semver.org/),
 this launcher's version is also following the semver specification.
 
-The easiest way to install the launcher is to use the `pip` tool of your Python installation. On some linux distribution 
+The easiest way to install the launcher is to use the `pip` tool of your Python installation. On some linux distribution
 you might have to use `pip3` instead of `pip` in order to run it on Python 3. You can also use `python -m pip` if the
 `pip` command is not in the path and the python executable is.
 
@@ -53,7 +58,7 @@ you might have to use `pip3` instead of `pip` in order to run it on Python 3. Yo
 pip install --user portablemc
 ```
 
-We advise you to keep `--user` because this allows to install the launcher for your current user only, it is implicit 
+We advise you to keep `--user` because this allows to install the launcher for your current user only, it is implicit
 if you are not an administrator and if you are, it allows not to modify other users' installations.
 
 After that, you can try to show the launcher help message using `portablemc` in your terminal. If it fails, you must
@@ -62,16 +67,17 @@ directory at `%appdata%/Python/Python3X/Scripts` and add it to the user's enviro
 systems this should work properly because the script is put in `~/.local/bin`.
 
 # Sub-commands
-Arguments are split between multiple sub-commands. For example `portablemc <sub-command>`. You can use `-h` 
-argument to display help *(also works for every sub-commands)*.
+
+Arguments are split between multiple sub-commands. For example `portablemc <sub-command>`. You can use `-h`
+argument to display help _(also works for every sub-commands)_.
 
 You may need to use `--main-dir <path>` if you want to change the main directory of the game. The main
 directory stores libraries, assets, versions. **By default** the location
-of this directory is OS-dependent, but always in your user's home directory, 
+of this directory is OS-dependent, but always in your user's home directory,
 [check wiki for more information](https://minecraft.gamepedia.com/.minecraft).
 
 You may also need `--work-dir <path>` to change the directory where your saves, resource packs and
-all "user-specific" content is stored. This can be useful if you have a shared read-only main directory 
+all "user-specific" content is stored. This can be useful if you have a shared read-only main directory
 (`--main-dir`) and user-specific working directory (for example in `~/.minecraft`, by default it's the
 location of your main directory). This launcher also stores the authentication credentials in this directory
 (since launcher version 1.1.4).
@@ -84,22 +90,24 @@ by the launcher or addons. You can use the special value 0 to force using local 
 now, it's used by the launcher only for the version manifest fetching as it is now locally cached.
 
 ## Start the game
+
 The `portablemc start [arguments...] [version]` sub-command is used to prepare and launch the game. A lot
-of arguments allow you to control how to game will behave. The only positional argument is the version, 
-which can be either a full version id (which you can get from the [search](#search-for-versions) 
+of arguments allow you to control how to game will behave. The only positional argument is the version,
+which can be either a full version id (which you can get from the [search](#search-for-versions)
 sub-command), or a type of version to select the latest of this type (`release` (default) or `snapshot`),
 if you omit the version argument, it's equivalent to `release`.
 
 ### Authentication
+
 Online mode is supported by this launcher, use the `-l <email_or_username>` (`--login`) argument to
-log into your account *(login with a username is deprecated by Mojang)*. If your session is not
+log into your account _(login with a username is deprecated by Mojang)_. If your session is not
 cached nor valid, the launcher will ask for the password.
 
 You can use the the `-m` (`--microsoft`) to authenticate a Microsoft account if you already had
 migrated your account. In this case the launcher will open a page in your web browser with the
 Microsoft login page.
 
-You can disable session caching using the argument `-t` (`--temp-login`). If your session is 
+You can disable session caching using the argument `-t` (`--temp-login`). If your session is
 not cached nor valid, you will be asked for the password on every launch.
 
 You can also use `--anonymise` in order to hide most of your email when printing it to the terminal. For example,
@@ -110,6 +118,7 @@ However, if you use this, make sure that you either use an alias or a variable w
 **[Check below](#authentication-sessions) for more information about authentication sessions.**
 
 ### Offline mode
+
 If you need fake offline accounts you can use `-u <username>` (`--username`) to define the username and/or
 `-i <uuid>` (`--uuid`) to define your player's [UUID](https://wikipedia.org/wiki/Universally_unique_identifier).
 
@@ -117,9 +126,10 @@ If you omit the UUID, a random one is chosen. If you omit the username, the firs
 are used for it. **These two arguments are overwritten by the `-l` (`--login`) argument**.
 
 ### Custom JVM
-The launcher uses Java Virtual Machine to run the game, by default the launcher downloads and uses the official JVM 
+
+The launcher uses Java Virtual Machine to run the game, by default the launcher downloads and uses the official JVM
 [distributed by Mojang](https://launchermeta.mojang.com/v1/products/java-runtime/2ec0cc96c44e5a76b9c8b7c39df7210883d12871/all.json)
-which is adapted to the running version. The JVM is installed in a sub-directory called `jvm` inside the main directory. 
+which is adapted to the running version. The JVM is installed in a sub-directory called `jvm` inside the main directory.
 You can change it by providing a path to the `java` binary with the `--jvm <path_to/bin/java>` argument. By default, the
 launcher starts the JVM with default arguments, these are the following and are the same as the Mojang launcher:
 
@@ -131,45 +141,50 @@ You can change these arguments using the `--jvm-args=<args>`, **please always qu
 be one argument for PMC. For example `portablemc start "--jvm-args=-Xmx2G -XX:+UnlockExperimentalVMOptions"`.
 
 ### Auto connect to a server
-Since Minecraft 1.6 we can start the game and automatically connect to a server. To do that you can use 
-`-s <addr>` (`--server`) for the server address (e.g. `mc.hypixel.net`) and the `-p` (`--server-port`) 
+
+Since Minecraft 1.6 we can start the game and automatically connect to a server. To do that you can use
+`-s <addr>` (`--server`) for the server address (e.g. `mc.hypixel.net`) and the `-p` (`--server-port`)
 to specify its port, by default to 25565.
 
 ### LWJGL version and ARM support
+
 With `--lwjgl {3.2.3,3.3.0,3.3.1}` you can update the LWJGL version used when starting the game. This can be used to support
-ARM architectures, but this may only work with modern versions which are already using LWJGL 3. This argument works by 
-dynamically rewriting the version's metadata, the new metadata is dumped in the version directory. Using these versions 
-on ARM is unstable and can show you an error with `GLXBadFBConfig`, in such cases you should export the following 
-environment variable `export MESA_GL_VERSION_OVERRIDE=4.5` (more info [here](https://forum.winehq.org/viewtopic.php?f=8&t=34889)). 
+ARM architectures, but this may only work with modern versions which are already using LWJGL 3. This argument works by
+dynamically rewriting the version's metadata, the new metadata is dumped in the version directory. Using these versions
+on ARM is unstable and can show you an error with `GLXBadFBConfig`, in such cases you should export the following
+environment variable `export MESA_GL_VERSION_OVERRIDE=4.5` (more info [here](https://forum.winehq.org/viewtopic.php?f=8&t=34889)).
 
 ### Miscellaneous
+
 With `--dry`, the game is prepared but not started.
 
-With `--demo` you can enable the [demo mode](https://minecraft.gamepedia.com/Demo_mode) of the game.  
+With `--demo` you can enable the [demo mode](https://minecraft.gamepedia.com/Demo_mode) of the game.
 
 With `--resol <width>x<height>` you can change the resolution of the game window.
 
 With `--no-better-logging` flag you can disable the better logging configuration used by the launcher
 to avoid raw XML logging in the terminal.
 
-The two arguments `--disable-mp` (mp: multiplayer), `--disable-chat` respectively to disable multiplayer button and 
-disable in-game chat *(since 1.16)*.
+The two arguments `--disable-mp` (mp: multiplayer), `--disable-chat` respectively to disable multiplayer button and
+disable in-game chat _(since 1.16)_.
 
 ## Search for versions
+
 The `portablemc search [-l] [version]` sub-command is used to search for versions. By default, this command
 will search for official versions available to download, you can instead search for local versions
 using the `-l` (`--local`) flag. The search string is optional, if not given all official or local
 versions are displayed.
 
 ## Authentication sessions
+
 Two subcommands allow you to store or logout of sessions: `portablemc login|logout <email_or_username>`.
 These subcommands don't prevent you from using the `-l` (`--login`) argument when starting the game,
 these are just here to manage the session storage.
 
-A new argument `-m` (`--microsoft`) is available for both subcommands since `1.1.4` for migrated 
+A new argument `-m` (`--microsoft`) is available for both subcommands since `1.1.4` for migrated
 Microsoft accounts.
-The launcher will open the Microsoft login page (with your email pre-typed in) in your web browser 
-and wait until validated. 
+The launcher will open the Microsoft login page (with your email pre-typed in) in your web browser
+and wait until validated.
 
 **Your password is not saved!** Only a token is saved (the official launcher also does that)
 in the file `portablemc_auth.json` in the working directory. In older version of the launcher
@@ -177,11 +192,14 @@ in the file `portablemc_auth.json` in the working directory. In older version of
 file is automatic and irreversible (the old file is deleted).
 
 ## Addon sub-command
+
 The `portablemc addon list|show` sub-commands are used to list and show addons.
 
 # Addons
+
 The following official add-ons are supported and maintained, since version 3.0.0 you can install them from from PyPI as shown
 in the following pages:
+
 - [Fabric ⇗](/src/fabric/README.md)
 - [Forge ⇗](/src/forge/README.md)
 - [Quilt ⇗](/src/quilt/README.md)
@@ -191,17 +209,20 @@ in the following pages:
 See the [Addon Sub-command](#addon-sub-command) for more information on how to list and show which add-ons are installed.
 
 # Log4j Exploit
+
 The launcher is safe to Log4j exploit since v2.2.0, if you are running an older version, please update or read the
 following issue for a temporary fix: [#52](https://github.com/mindstorm38/portablemc/issues/52).
 
 # Contribute
 
 ## Setup environment
-This project is currently a monorepo based on Poetry, each official module is stored in the [src](src/) directory, the 
+
+This project is currently a monorepo based on Poetry, each official module is stored in the [src](src/) directory, the
 main and mandatory module is [core](src/core). The other modules are official add-ons.
 
-We also suggest Conda (or Miniconda) for easy development together with Poetry. If you want to try you can use the 
+We also suggest Conda (or Miniconda) for easy development together with Poetry. If you want to try you can use the
 following commands:
+
 ```console
 # You can use any version of Python here from 3.6 to test compatibility of the launcher.
 conda create -n pmc python=3.10 pip
@@ -210,6 +231,7 @@ conda env config vars set PYTHONNOUSERSITE=1 -n pmc
 ```
 
 On you have a conda environment setup, you can use on each module you want to test.
+
 ```console
 # Assume we are in the project's directory.
 # First, we need to activate the environment.
@@ -227,13 +249,15 @@ portablemc --help
 ```
 
 You can call this development version from everywhere using:
+
 ```console
 conda run -n pmc portablemc
 ```
 
 ## Contributors
-This launcher would not be as functional without the contributors, and in particular the following for their bug reports, suggestions and pull requests to make the launcher better: 
-[GoodDay360](https://github.com/GoodDay360), 
+
+This launcher would not be as functional without the contributors, and in particular the following for their bug reports, suggestions and pull requests to make the launcher better:
+[GoodDay360](https://github.com/GoodDay360),
 [Ristovski](https://github.com/Ristovski),
 [MisileLaboratory](https://github.com/MisileLab) and
 [GooseDeveloper](https://github.com/GooseDeveloper).
